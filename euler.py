@@ -18,13 +18,12 @@ def even_fibonacci_numbers(n):
     """By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms."""
     return reduce((lambda x, y: x + y ),(filter(lambda x: x % 2 == 0,(i for i in fib_gen(n)))))
 
-
 def is_prime(n):
     """check if prime number"""
     if n > 1:
         if n == 2:
             return True
-        for x in range(3, int(math.sqrt(n) + 1), 2):
+        for x in range(2, n):
             if n % x == 0:
                 return False
         return True
@@ -32,12 +31,8 @@ def is_prime(n):
 
 def prime_gen(n):
     """Generate all primes"""
-    for i in range(2, n):
-        if i == 2:
-            yield i
-        elif i % 2 != 0:
-            yield i
-
+    return [x for x in range(1,n) if is_prime(x)]
+    
 
 def prime_factor_gen(n):
     """generate a prime factor sequence"""
@@ -45,7 +40,14 @@ def prime_factor_gen(n):
     return [i for i in factors]
 
 def largest_prime_factor(n):
-
-    #prime factor generator
-    largest_num = max([i for i in prime_gen(n)])
-    return largest_num
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return max(factors)

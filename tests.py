@@ -22,7 +22,7 @@ class Test_euler_answers(unittest.TestCase):
         self.assertTrue(euler.is_prime(7))
 
     def test_prime_gen(self):
-        prime_list = [i for i in euler.prime_gen(100)]
+        prime_list = euler.prime_gen(100)
         print('primes = {}'.format(prime_list))
         self.assertEqual(prime_list,[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97])
 
@@ -33,7 +33,7 @@ class Test_euler_answers(unittest.TestCase):
 
     def test_largest_prime_factor(self):
         """test the largest prime factor of 600851475143"""
-        #self.assertEqual(euler.largest_prime_factor(600851475143),6857)
+        self.assertEqual(euler.largest_prime_factor(600851475143),6857)
 
 if __name__ == '__main__':
     unittest.main()
