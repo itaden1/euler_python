@@ -51,3 +51,29 @@ def largest_prime_factor(n):
     if n > 1:
         factors.append(n)
     return max(factors)
+
+def is_palindrome(n):
+    """return true if palindrome"""
+    return str(n) == str(n)[::-1]
+
+def get_largest_palindrome(l,h):
+    """Count down through the products and return when palindrome is found"""
+    stop = l
+    int1,int2 = h, h
+    palindromes = []
+    while True:
+        result = int1 * int2
+        if is_palindrome(result):
+            print (result)
+            palindromes.append(result)
+        int1 -= 1
+        if int1 <= stop:
+            int1 = 999
+            int2 -= 1
+        if int2 <= stop:
+            break
+
+    highest = max(palindromes)
+    return highest
+
+
