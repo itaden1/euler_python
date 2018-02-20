@@ -23,7 +23,6 @@ class Test_euler_answers(unittest.TestCase):
 
     def test_prime_gen(self):
         prime_list = euler.prime_gen(100)
-        #print('primes = {}'.format(prime_list))
         self.assertEqual(prime_list,[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97])
 
     def test_prime_factor_gen(self):
@@ -43,6 +42,11 @@ class Test_euler_answers(unittest.TestCase):
         """Project Euler problem 4: find the largest palindrom number made from the product of two 3 digit numbers"""
         number = euler.get_largest_palindrome(100, 999)
         self.assertEqual(number,906609)
+
+    def test_smallest_number_evenly_divisible(self):
+        """Project Euler problem 5: find the smallest number divisible by all numbersbetween 1 and 20"""
+        number = euler.get_smallest_divisible(1,20)
+        self.assertEqual(number,232792560)
 
 if __name__ == '__main__':
     unittest.main()

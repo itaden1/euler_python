@@ -52,9 +52,11 @@ def largest_prime_factor(n):
         factors.append(n)
     return max(factors)
 
+
 def is_palindrome(n):
     """return true if palindrome"""
     return str(n) == str(n)[::-1]
+
 
 def get_largest_palindrome(l,h):
     """Count down through the products and return when palindrome is found"""
@@ -64,7 +66,6 @@ def get_largest_palindrome(l,h):
     while True:
         result = int1 * int2
         if is_palindrome(result):
-            print (result)
             palindromes.append(result)
         int1 -= 1
         if int1 <= stop:
@@ -76,4 +77,24 @@ def get_largest_palindrome(l,h):
     highest = max(palindromes)
     return highest
 
+
+def get_smallest_divisible(n1,n2):
+    """get smallest number that is evenly divisible by all numbers between n1 and n2"""
+    
+    numbers = [i for i in range(n1,n2+1)]
+    print(numbers)
+    for i in range(n1+1,n2+1):
+        factors = [f for f in range(1,i) if i % f == 0 and is_prime(f)]
+        print('factors of {} are {}'.format(i,factors))
+    i = n1
+    n = n2
+    while True:
+        if n % i == 0:
+            #print('{} % {} = 0'.format(n,i))
+            if i >= n2:
+                return n
+            i += 1
+        else:
+            n += n2 
+            i = n1 
 
